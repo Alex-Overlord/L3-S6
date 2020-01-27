@@ -1,0 +1,229 @@
+[
+      {
+            "id": "1",
+            "nb": "3",
+            "question": "Un gardien surveille chaque salle du musée.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Un seul gardien est dans une salle dans laquelle il a accès à toutes les caméras du musée."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Un gardien différent doit surveiller la salle qui lui a été assignée."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Un gardien doit faire une ronde dans le musée pour surveiller chaque salle."
+                  }
+            ]
+      },
+     
+      {
+            "id": "2",
+            "nb": "3",
+            "question" : "Toutes les écoles sont fermées un certain jour.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Toutes les écoles sont fermées le même jour."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Toutes les écoles sont fermées un jour différent."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Toutes les écoles sont fermées un jour (pas forcément différent des autres)."
+                  }
+            ]
+      },
+
+      {
+            "id": "3",
+            "nb": "2",
+            "question" : "Chaque magasin a son propre jour de fermeture.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Les magasins ont un jour de fermeture forcément différents les uns des autres."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Deux magasins peuvent être fermés le même jour."
+                  }
+            ]
+      },
+
+      {
+            "id": "4",
+            "nb": "3",
+            "question" : "Un bus ramènera les invités.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Un bus pour tous les invités."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Un bus pour chaque invité."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Un même invité dans tous les bus."
+                  }
+            ]
+      },
+
+      {
+            "id": "5",
+            "nb": "3",
+            "question" : "Les enfants ont reçu un cadeau lors du dernier jour d'école.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Chaque enfant a reçu un cadeau différent."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Les enfants n'ont pas eu de cadeau."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Tous les enfants ont reçu le même cadeau."
+                  }
+            ]
+      },
+
+      {
+            "id": "6",
+            "nb": "2",
+            "question" : "Les entreprises vont faire faillite.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Certaines entreprises vont faire faillite."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Toutes les entreprises vont faire faillite."
+                  }
+            ]
+      },
+
+      {
+            "id": "7",
+            "nb": "3",
+            "question" : "Un cercle touche chacun des carrés.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Un même cercle touche tous les carrés."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Un cercle différent touche chaque carré."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Deux carrés peuvent être touchés par le même cercle ou par des cercles différents."
+                  }
+            ]
+      },
+
+      {
+            "id": "8",
+            "nb": "2",
+            "question" : "Des crayons gratuits seront distribués aux adhérents.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Chaque adhérent aura droit à maximum un crayon."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Les adhérents auront droit à autant de crayons qu'ils le souhaitent."
+                  }
+            ]
+      },
+
+      {
+            "id": "9",
+            "nb": "3",
+            "question" : "Tous les musées de la ville ferment certains jours de la semaine.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Parmi tous les musées de la ville, au moins un est fermé chaque jour."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Tous les musées de la ville ferment le ou les même jours."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Les musées de la ville ferment indépendamment les uns des autres."
+                  }
+            ]
+      },
+
+      {
+            "id": "10",
+            "nb": "4",
+            "question" : "Des étudiants cherchent du travail.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Tous les étudiants cherchent le même travail."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Tous les étudiants cherchent un travail différent."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Certains étudiants cherchent le même travail."
+                  },
+                  {
+                        "idr": "4",
+                        "r": "Certains étudiants cherchent un travail différent."
+                  }
+            ]
+      },
+
+      {
+            "id": "11",
+            "nb": "2",
+            "question" : "Tous les touristes jettent leurs mégots dans la nature.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Tous les touristes fument et certains jettent leurs mégots."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Tous les touristes qui fument jettent leurs mégots."
+                  }
+            ]
+      },
+
+      {
+            "id": "12",
+            "nb": "3",
+            "question" : "Il existe des gens qui détestent les pizzas à l'ananas.",
+            "reponses" : [
+                  {
+                        "idr": "1",
+                        "r": "Personne n'aime les pizzas à l'ananas."
+                  },
+                  {
+                        "idr": "2",
+                        "r": "Certaines personnes aiment les pizzas mais pas à l'ananas."
+                  },
+                  {
+                        "idr": "3",
+                        "r": "Tout le monde aime les pizzas mais certaines personnes détestent quand elles sont à l'ananas."
+                  }
+            ]
+      }
+]

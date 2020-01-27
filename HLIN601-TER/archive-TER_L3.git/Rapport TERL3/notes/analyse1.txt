@@ -1,0 +1,42 @@
+% Titre:
+Analyse de l'article "La langue commune au cœur du raisonnement, notamment mathématique"
+% Source:
+http://images.math.cnrs.fr/La-langue-commune-au-coeur-du-raisonnement-notamment-mathematique.html
+Le 27 octobre 2017  - Ecrit par  Christian Retoré 
+
+% Partie 1: Raisonnement et preuves, phrases et formules
+- "Les syllogismes sont formulés en langage plus ou moins naturel."
+- Lors d'une exposition d'un résultat mathématique, certains résultats clés sont écrite au tableau, mais les jointures logiques elles sont souvent dites à l'oral, et peut donc être sujet à ambiguïté.
+- "En revanche, les ambiguïtés de portée des quantificateurs, de portée de la négation, l’ambiguïté de la référence d’un pronom sont de fâcheuses causes d’incompréhension, surtout pour celui qui a du mal à suivre comme par exemple un⋅e élève en difficulté."
+
+% Partie 2: Phrases & formules
+- "La grammaire générative utilise des arbres syntagmatiques dont les feuilles portent les mots qui suivent l’ordre gauche droite des feuilles, les nœuds internes donnant la nature grammaticale du sous arbre qu’il engendre [...] a été inventé pour l’anglais, langue sans cas et donc dans laquelle l’ordre des mots est assez strict."
+- "La grammaire de dépendance utilise des arbres de dépendances dont les nœuds sont des mots qui sont reliés entre eux par des arcs étiquetés par des relations syntaxique [...] La relation entre ordre des mots et arbre syntaxique étant souple, elle nuit aux qualités mathématiques de ce modèle [...] cette famille de grammaires a été développée pour le russe, langue avec cas, et donc dans laquelle l’ordre des mots est relativement libre."
+- L'ordre des mots à eu importance primordial en mathématique, il y a donc certaines grammaire (par exemple celle générative) qui favorise un langage mathématique par rapport à d'autres langages utilisant une autre grammaire (comme celle de dépendance).
+
+- "En 1941, il épousa la philosophe Elizabeth Anscombe, grâce à laquelle il entra en contact avec Ludwig Wittgenstein. Bien qu’il n’ait jamais suivi l’enseignement académique de ce dernier, cependant il en éprouve fortement l’influence."
+- Geach était-il l’élève de Wittgenstein ? Il manque des informations sur la structure grammaticale, et sur la structure logique qui y est intimement liée : comme chacun peut le constater sur cet exemple, il manque notamment les (co)références des pronoms (7 sur 47 mots).
+- Mais on peut le deviner grâce à la négation "Bien qu’il n’ait jamais suivi l’enseignement académique de ce dernier".
+
+- "Les quantificateurs comme « chaque », « tous les », « les », « tout » (« pour tout » en mathématiques) ou « un », « des », « quelques », « certains » (« il existe » en mathématiques) sont plus complexes."
+- "Lorsque les deux quantificateurs sont en compétition, il y a ambiguïté : « les malades alités attendent un bon médecin » peut être compris de deux manières (tous les malades alités [par exemple dans un hôpital donné] attendent tous le même médecin, lequel est un bon médecin, ou chaque malade alité [par exemple d’une ville donnée] verra un bon médecin, par forcément le même)."
+- "L’ambiguïté est encore plus forte et la compréhension plus difficile lorsque les quantificateurs interagissent avec la négation : « Tous les malades n’apprécient pas les bons médecins »."
+
+%% Structure logique, pronoms et référents:
+
+        Si un fermier possède un âne alors il le bat. 
+        % C'est le fermier qui bat l'âne, ou l'inverse ?
+        Si un nombre premier divise le carré d’un nombre alors il divise ce nombre. 
+        % le premier nombre (celui qui est premier) divise le second, ou l'inverse ?
+
+        [∃p ∃a ane(a) & paysan(p) & possede(p,a)] ⟹ bat(p,a)
+        (∃p ∃a premier(p) & p∣a2) ⟹ p ∣ a  % (p divise a)
+        
+        ∀p ∀a [[ane(a) & paysan(p) & possede(p,a)] ⟹ bat(p,a)]
+        ∀p ∀a [premier(p) & p∣a2] ⟹ p ∣ a
+
+"Pourquoi la phrase avec l’âne est-elle moins ambiguë que celle avec les nombres alors qu’elles ont la même structure syntaxique ? Tout simplement parce que notre connaissance du monde, des paysans et des ânes nous dit qui bat qui — mais ce genre d’analyse du sens est bien difficile à automatiser."
+
+- L'utilisation de "il" peut aussi bien faire référence au premier sujet de la proposition, qu'au second. Il y a donc ambiguïté.
+- De plus, "il" peut faire référence à un sujet encore plus ancien. 
+- L'utilisation de "ce dernier" peut palier à ces deux problèmes.

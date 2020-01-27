@@ -1,0 +1,60 @@
+https://framaforms.org/etude-des-preferences-dans-lexpression-de-la-quantification-1571925194
+https://jeremieroux.fr/TERL3/
+https://78.224.56.207/phpMyAdmin/
+
+1) Un gardien surveille chaque salle du musée.
+Un seul gardien est dans une salle dans laquelle il a accès à toutes les caméras du musée.
+Un gardien différent doit surveiller la salle qui lui a été assignée.
+Un gardien doit faire une ronde dans le musée pour surveiller chaque salle.
+
+2) Toutes les écoles sont fermées un certain jour.
+Toutes les écoles sont fermées le même jour.
+Toutes les écoles sont fermées un jour différent.
+Toutes les écoles sont fermées un jour (pas forcément différent des autres).
+
+3) Chaque magasin a son propre jour de fermeture.
+Les magasins ont un jour de fermeture forcément différents les uns des autres.
+Deux magasins peuvent être fermés le même jour.
+
+4) Un bus ramènera les invités.
+Un bus pour tous les invités.
+Un bus pour chaque invité.
+Un même invité dans tous les bus.
+
+5) Les enfants ont reçu un cadeau lors du dernier jour d'école.
+Chaque enfant a reçu un cadeau différent.
+Les enfants n'ont pas eu de cadeau.
+Tous les enfants ont reçu le même cadeau.
+
+6) Les entreprises vont faire faillite.
+Certaines entreprises vont faire faillite.
+Toutes les entreprises vont faire faillite.
+
+7) Un cercle touche chacun des carrés.
+Un même cercle touche tous les carrés.
+Un cercle différent touche chaque carré.
+Deux carrés peuvent être touchés par le même cercle ou par des cercles différents.
+
+8) Des crayons gratuits seront distribués aux adhérents.
+Chaque adhérent aura droit à maximum un crayon.
+Les adhérents auront droit à autant de crayons qu'ils le souhaitent.
+
+9) Tous les musées de la ville ferment certains jours de la semaine.
+Parmi tous les musées de la ville, au moins un est fermé chaque jour.
+Tous les musées de la ville ferment le ou les même jours.
+Les musées de la ville ferment indépendamment les uns des autres.
+
+10) Des étudiants cherchent du travail.
+Tous les étudiants cherchent le même travail.
+Tous les étudiants cherchent un travail différent.
+Certains étudiants cherchent le même travail.
+Certains étudiants cherchent un travail différent.
+
+11) Tous les touristes jettent leurs mégots dans la nature.
+Tous les touristes fument et certains jettent leurs mégots.
+Tous les touristes qui fument jettent leurs mégots.
+
+12) Il existe des gens qui détestent les pizzas à l'ananas.
+Personne n'aime les pizzas à l'ananas.
+Certaines personnes aiment les pizzas mais pas à l'ananas.
+Tout le monde aime les pizzas mais certaines personnes détestent quand elles sont à l'ananas.

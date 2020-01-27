@@ -1,0 +1,7 @@
+idée pour varier la formulation des phrases
+faire des groupes de mots par type?
+_jour de la semaine
+_aliments
+_animaux
+
+regrouper les verbes dans un fichier texte

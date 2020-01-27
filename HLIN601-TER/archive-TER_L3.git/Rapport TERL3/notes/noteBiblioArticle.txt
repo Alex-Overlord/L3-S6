@@ -1,0 +1,23 @@
+Conditions d’assertion de chaque et de tout et règles de déduction du quantificateur universel
+---------------------------------------
+*/1- Tout et Chaque
+Comparaison sur l'aspect sémantique du quantificateur "Tout" et "Chaque".
+(ça serais pas plutôt "Pour tout" et "Il existe" ?)
+On remarque que le quantificateur "tout" est associer à une règle, semblable a de la vérité générale. On remarque en effet qu'il est souvent utiliser dans les lemmes et théorèmes. Par rapport à "Chaque" qui est plutôt utilisé suite à une observation.
+C'est ainsi l'hypothèse de départ.
+
+(Aparté: Dans l'article, quelle est la signification de "phrase générique"?)
+phrase generique quand c'est generale, il n'y a pas d'identifiquation
+
+*/2- Tout et N'importe quel
+
+Tout et NPQ -> impératif
+(C'est quoi "NPQ" ?)
+Or pour "tout" il est nécessaire d'apporter un domaine. Tout tel que...
+(un domaine ? un contexte ?)
+
+Tout et NPQ -> générique
+-Tout par rapport à "N'importe quelle" apporte une généralité maximal, c'est-à-dire qu'il ne peut pas y avoir d'exception.
+(aparté: Signification d'identité modale)
+
+ Problématique rencontrée:

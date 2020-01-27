@@ -1,0 +1,23 @@
+body{
+     /*background-image: url("image.jpg");*/
+     background-attachment: fixed;
+
+}
+h1 { 
+	text-align: center;
+	font-family:Verdana, sans-serif;
+	color: red;
+	font-size: 250%;
+}
+.bouton {
+	display: block;
+ 	margin-top: 25px;
+	margin-left: 700px;
+	
+}
+#text {
+	text-align: center;
+}
+p{
+	font-size: 150%;
+}
