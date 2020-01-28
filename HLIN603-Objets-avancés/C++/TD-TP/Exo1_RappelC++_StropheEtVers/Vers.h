@@ -1,5 +1,5 @@
-#ifndef vers_h
-#define vers_h
+#ifndef Vers_h
+#define Vers_h
 
 class Vers {
   private:
