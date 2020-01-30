@@ -15,7 +15,10 @@ class Vers {
 		virtual void setSuiteMots(string sm);
 		virtual string getRime() const;
 		virtual void setRime(string r);
-		virtual void saisie(istream& is);
-		virtual void affiche(ostream& os) const;
+		virtual void saisie(istream& is); // saisi le vers
+		virtual void affiche(ostream& os) const; // affiche le vers
 };
+// ostream& operator<< (ostream&, const Vers&);
+// istream& operator>> (istream&, Vers&);
+
 #endif
