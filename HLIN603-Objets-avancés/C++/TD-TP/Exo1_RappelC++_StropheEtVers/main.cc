@@ -6,6 +6,9 @@ using namespace std;
 
 int main() {
   Vers* v1 = new Vers();
-  (*v1).saisie(cin);
-  (*v1).affiche(cout);
+  
+  cout << "Saisi d'un vers\n";
+  cin >> *v1; // les espaces posent problèmes
+  cout << (*v1).getSuiteMots() << endl << (*v1).getRime() << endl;
+  cout << *v1 << endl;
 }

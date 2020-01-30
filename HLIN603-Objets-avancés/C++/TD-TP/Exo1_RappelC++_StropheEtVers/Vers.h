@@ -8,7 +8,7 @@ class Vers {
 		
 	public:
 		Vers();
-		explicit Vers(string s);
+		/*explicit*/ Vers(string s);
 		Vers(string s, string r);
 		virtual ~Vers();
 		virtual string getSuiteMots() const;
@@ -18,7 +18,7 @@ class Vers {
 		virtual void saisie(istream& is); // saisi le vers
 		virtual void affiche(ostream& os) const; // affiche le vers
 };
-// ostream& operator<< (ostream&, const Vers&);
-// istream& operator>> (istream&, Vers&);
+ostream& operator<<(ostream&, const Vers&);
+istream& operator>>(istream&, Vers&);
 
 #endif

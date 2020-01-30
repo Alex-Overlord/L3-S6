@@ -12,6 +12,7 @@ class Strophe {
 
   public:
     Strophe();
+    Strophe (const Strophe&);
     virtual ~Strophe();
 
     virtual void saisie(istream& is); // rempli la strophe de vers que l'on saisi
