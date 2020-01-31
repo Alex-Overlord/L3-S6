@@ -22,7 +22,7 @@ class Strophe {
     virtual Strophe& operator=(const Strophe& s);
     virtual Vers*& operator[](int i);
 };
-ostream& operator<< (ostream& flotSortie, const Strophe& s);
-istream& operator>> (istream& flotEntree, Strophe& s);
+ostream& operator<< (ostream& os, const Strophe& s);
+istream& operator>> (istream& is, Strophe& s);
 
 #endif

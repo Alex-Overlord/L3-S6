@@ -10,6 +10,7 @@ Strophe::Strophe(const Strophe& autreStrophe) {
   suiteVers = new Vers*[nbVers];
   for (int i = 0; i < nbVers; i++) 
     suiteVers[i] = autreStrophe.suiteVers[i];
+  // *this = autreStrophe;
 }
 Strophe::~Strophe() { if (suiteVers) delete[] suiteVers; }
 // on ne détruit que le tableau, pas les vers.
@@ -43,6 +44,7 @@ Strophe& Strophe::operator=(const Strophe& s) {
   if (this != &s) { // on compare les adresses
     if (suiteVers) delete[] suiteVers;
     nbVers = s.nbVers;
+    suiteVers = new Vers*[nbVers];
     for (int i = 0; i < nbVers; i++)
       suiteVers[i] = s.suiteVers[i];
     return *this;
@@ -52,12 +54,12 @@ Vers*& Strophe::operator[](int i) {
   return suiteVers[i]; 
 }
 
-ostream& operator<<(ostream& flotSortie, const Strophe& s) {
-  s.affiche(flotSortie);
-  return flotSortie;
+ostream& operator<<(ostream& os, const Strophe& s) {
+  s.affiche(os);
+  return os;
 }
 
-istream& operator>>(istream& flotEntree, Strophe& s) {
-  s.saisie(flotEntree);
-  return flotEntree;
+istream& operator>>(istream& is, Strophe& s) {
+  s.saisie(is);
+  return is;
 }

@@ -1,0 +1,18 @@
+Un CompteBancaire occupe 3 cases :
+- Le nom de sa classe
+- Son solde
+- Son bonus
+
+_Pourquoi manipuler les objets par des adresses ? :
+
+CompteBancaire CompteVP[3]
+CompteRemunere c1(100, 1)
+CompteVP[0] = c1;
+
+-> problème car on a 3 informations mais que 2 cases 
+
+_En manipulant des adresses :
+
+CompteBancaire* CompteVP[3]
+CompteRemunere* c1(100, 1)
+CompteVP[0] = c1;
