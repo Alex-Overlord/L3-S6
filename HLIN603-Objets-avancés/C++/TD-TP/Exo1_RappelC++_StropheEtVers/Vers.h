@@ -8,7 +8,8 @@ class Vers {
 		
 	public:
 		Vers();
-		/*explicit*/ Vers(string s);
+		/*explicit*/ 
+		Vers(string s);
 		Vers(string s, string r);
 		virtual ~Vers();
 		virtual string getSuiteMots() const;

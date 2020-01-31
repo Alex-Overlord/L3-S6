@@ -12,17 +12,17 @@ class Strophe {
 
   public:
     Strophe();
-    Strophe (const Strophe&);
+    Strophe (const Strophe&); // constructeur par copie
     virtual ~Strophe();
 
     virtual void saisie(istream& is); // rempli la strophe de vers que l'on saisi
     virtual Vers* vers(int i) const; // retourne le vers d'indice i
     virtual void affiche(ostream& os) const; // affiche les vers de la strophe
 
-    // virtual Strophe& operator=(const Strophe& s);
-    // virtual Vers*& operator[](int i);
+    virtual Strophe& operator=(const Strophe& s);
+    virtual Vers*& operator[](int i);
 };
-// ostream& operator<< (ostream& flotSortie, const Strophe& s);
-// istream& operator>> (istream& flotEntree, Strophe& s);
+ostream& operator<< (ostream& flotSortie, const Strophe& s);
+istream& operator>> (istream& flotEntree, Strophe& s);
 
 #endif

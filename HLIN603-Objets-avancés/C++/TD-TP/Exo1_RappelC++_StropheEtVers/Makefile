@@ -1,7 +1,7 @@
-GPP=g++
-SRC=Vers.cc Strophe.cc main.cc
-OBJ=$(SRC:%.cc=%.o)
-EXE=main
+GPP = g++
+SRC = Vers.cc Strophe.cc main.cc
+OBJ = $(SRC:%.cc=%.o)
+EXE = main
 
 all: $(OBJ)
 	$(GPP) -o $(EXE) $(OBJ)

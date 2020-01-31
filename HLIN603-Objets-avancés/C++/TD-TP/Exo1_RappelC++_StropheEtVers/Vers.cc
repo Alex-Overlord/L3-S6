@@ -17,13 +17,16 @@ void Vers::saisie(istream& is) {
   cout << "vers puis rime\n";
   is >> suiteMots >> rime;
 }
+
 void Vers::affiche(ostream& os) const {
   os << "<<" << suiteMots << "<<";
 }
+
 ostream& operator<<(ostream& os, const Vers& v) {
 	v.affiche(os);
 	return os;
 }
+
 istream& operator>>(istream& is, Vers& v) {
 	v.saisie(is);
 	return is;
