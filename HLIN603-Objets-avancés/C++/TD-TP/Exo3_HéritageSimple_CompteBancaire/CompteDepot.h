@@ -4,6 +4,6 @@
 class CompteDepot : virtual public CompteBancaire {
 public:
 	virtual ~CompteDepot();
-}
+};
 
 #endif

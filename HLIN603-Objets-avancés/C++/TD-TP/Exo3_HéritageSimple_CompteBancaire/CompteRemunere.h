@@ -6,6 +6,6 @@ public:
 	virtual ~CompteRemunere();
 
 	virtual void deposer(int montant);
-}
+};
 
 #endif

@@ -1,5 +1,5 @@
 GPP = g++
-SRC = Vers.cc Strophe.cc main.cc
+SRC = CompteBancaire.cc CompteDepot.cc CompteRemunere main.cc
 OBJ = $(SRC:%.cc=%.o)
 EXE = main
 

@@ -10,6 +10,6 @@ public:
 	virtual ~CompteBancaire();
 
 	virtual void deposer(int montant);
-}
+};
 
 #endif
