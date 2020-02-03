@@ -4,9 +4,10 @@
 class CompteBancaire {
 protected:
 	int solde;
+
 public:
 	CompteBancaire();
-	CompteBancaire(int s);
+	CompteBancaire(int solde);
 	virtual ~CompteBancaire();
 
 	virtual void deposer(int montant);
