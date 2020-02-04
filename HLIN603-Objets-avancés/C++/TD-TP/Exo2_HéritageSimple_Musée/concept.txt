@@ -1,0 +1,12 @@
+Exercice 2 : Héritage simple - Obejcts de musée et salle d'eposition
+
+Item :
+- descriptif
+- référence
+
+ItemArt : Item
+- auteur
+
+ItemDon : Item
+- donateur
+- année

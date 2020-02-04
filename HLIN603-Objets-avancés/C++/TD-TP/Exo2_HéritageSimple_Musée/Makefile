@@ -1,5 +1,5 @@
 GPP = g++
-SRC = Vers.cc Strophe.cc main.cc
+SRC = Item.cc main.cc
 OBJ = $(SRC:%.cc=%.o)
 EXE = main
 
