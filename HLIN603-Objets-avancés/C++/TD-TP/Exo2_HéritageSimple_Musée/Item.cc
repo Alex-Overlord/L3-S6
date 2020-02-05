@@ -20,7 +20,12 @@ void Item::setDescriptif(string d) { descriptif = d; }
 void Item::setReference(int r) { reference = r; }
 
 void Item::saisie(istream& is) {
-	cout << "Descriptif puis \n";
+	cout << "Descriptif puis reference\n";
+	is >> descriptif >> reference;
+}
+void Item::affiche(ostream& os) const {
+	os << descriptif << " " << reference;
+}
 
 Item& Item::operator=(const Item& i) {
 	if (this != &i) {
@@ -29,7 +34,12 @@ Item& Item::operator=(const Item& i) {
 		return *this;
 	}
 }
+
 ostream& operator<<(ostream& os, const Item& i) {
+	i.affiche(os);
+	return os;
 }
-istream& operator>>(istream& is, const Item& i) {
+istream& operator>>(istream& is, Item& i) {
+	i.saisie(is);
+	return is;
 }
