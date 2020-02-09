@@ -3,8 +3,9 @@ using namespace std;
 #include "CompteBancaire.h"
 #include "CompteRemunere.h"
 #include "CompteDepot.h"
-#include "CompteRemunereAvecCarteCredit.h"
 #include "CompteDepotRemunere.h"
+#include "CompteRemunereAvecCarteCredit.h"
+#include "CompteDepotAvecCarteCredit.h"
 
 #define N 3
 
@@ -47,15 +48,18 @@ int main() {
 
   /* TEST 3 */
 
-  CompteBancaire* ComptesVP[4];
+  CompteBancaire* ComptesVP[6];
   ComptesVP[0] = new CompteDepot(); 
   ComptesVP[1] = new CompteRemunere();
   ComptesVP[2] = new CompteRemunereAvecCarteCredit();
   ComptesVP[3] = new CompteDepotRemunere(); 
-  for (int i=0; i<4; i++) {
+  ComptesVP[4] = new CompteDepotAvecCarteCredit(); 
+  ComptesVP[5] = new CompteRemunereAvecCarteCredit(); 
+  for (int i=0; i<6; i++) {
     cout << "i = " << i << endl;
     ComptesVP[i]->deposer(250);
     delete ComptesVP[i];
+    cout << endl;
   }
 
 }

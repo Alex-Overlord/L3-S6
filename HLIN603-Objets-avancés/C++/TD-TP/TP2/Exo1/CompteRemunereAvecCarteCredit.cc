@@ -7,13 +7,15 @@ using namespace std;
 CompteRemunereAvecCarteCredit::CompteRemunereAvecCarteCredit() {}
 
 CompteRemunereAvecCarteCredit::CompteRemunereAvecCarteCredit(float s) 
-	: CompteBancaire(s) {}
+	: CompteRemunere(s) {}
 
 CompteRemunereAvecCarteCredit::~CompteRemunereAvecCarteCredit() {
 	solde -= 5;
 }
 
 void CompteRemunereAvecCarteCredit::deposer(float m) {
+	cout << "avant : " << solde << endl;
+	cout << "deposer(" << m << ")" << endl;
 	solde += m;
-	cout << "Montant du solde : " << solde << endl;
+	cout << "après : " << solde << endl;
 }

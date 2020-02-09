@@ -13,8 +13,8 @@ CompteBancaire::~CompteBancaire() {
 }
 
 void CompteBancaire::deposer(float m) { 
-	cout << solde << " avant" << endl;
+	cout << "avant : " << solde << endl;
 	cout << "deposer(" << m << ")" << endl;
 	solde += m; 
-	cout << solde << " après" << endl;
+	cout << "après : " << solde << endl;
 }

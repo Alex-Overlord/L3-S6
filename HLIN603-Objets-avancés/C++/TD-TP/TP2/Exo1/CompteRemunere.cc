@@ -12,10 +12,10 @@ CompteRemunere::~CompteRemunere() {
 }
 
 void CompteRemunere::deposer(float m) {
-	cout << solde << " avant" << endl;
+	cout << "avant : " << solde << endl;
 	cout << "deposer(" << m << ")" << endl;
 
 	solde += m * 1.01;
-	
-	cout << solde << " après" << endl;
+
+	cout << "après : " << solde << endl;
 }
