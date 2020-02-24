@@ -4,7 +4,7 @@ using namespace std;
 #include "Assoc.cc"
 
 int main() {
-  Assoc<char, int*> a;
-  Assoc<string, string>* pass = new Assoc<string, string>("citron","jaune");
+  Assoc<char,float> a;
+  Assoc<string,float>* pass = new Assoc<string,float>("citron",12);
   cout << *pass << endl;
 }

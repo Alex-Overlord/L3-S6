@@ -1,5 +1,3 @@
-using namespace std;
-#include <iostream>
 #include "Assoc.h"
 
 template<typename TypeCle, typename TypeValeur>

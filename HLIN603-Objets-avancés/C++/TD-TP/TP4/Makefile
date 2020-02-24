@@ -1,5 +1,5 @@
 GPP = g++
-SRC = main.cc Casier6.cc Oeuf.cc Casier6Oeuf.cc
+SRC = main.cc# Casier6.cc# Oeuf.cc Casier6Oeuf.cc
 OBJ = $(SRC:%.cc=%.o)
 EXE = exec
 
