@@ -1,5 +1,5 @@
 GPP = g++
-SRC = mainAssoc2.cc AssocStringFloat.cc 
+SRC = mainAssoc1.cc AssocStringFloat.cc 
 OBJ = $(SRC:%.cc=%.o)
 EXE = exec
 
