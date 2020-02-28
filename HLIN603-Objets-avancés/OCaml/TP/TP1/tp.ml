@@ -80,37 +80,75 @@ let rec string_of_form = function
   | Var n -> n
   | Not f -> "~" ^ (string_of_form f)
   | And (f1, f2) ->
-     "(" ^ (string_of_form f1) ^ "/\\" ^ (string_of_form f2) ^ ")"
+     "(" ^ (string_of_form f1) ^ " /\\ " ^ (string_of_form f2) ^ ")"
   | Or (f1, f2) ->
-     "(" ^ (string_of_form f1) ^ "\\/" ^ (string_of_form f2) ^ ")"
+     "(" ^ (string_of_form f1) ^ " \\/ " ^ (string_of_form f2) ^ ")"
   | Imp (f1, f2) ->
-     "(" ^ (string_of_form f1) ^ "=>" ^ (string_of_form f2) ^ ")"
+     "(" ^ (string_of_form f1) ^ " => " ^ (string_of_form f2) ^ ")"
   | Equ (f1, f2) ->
-     "(" ^ (string_of_form f1) ^ "<=>" ^ (string_of_form f2) ^ ")";;
+     "(" ^ (string_of_form f1) ^ " <=> " ^ (string_of_form f2) ^ ")";;
 
 (* Q3 *)
-(*let f1 = (Imp (And (Var "A") Top), Var "A");;*)
 
-let rec simplif_and = function
+let rec simp_and = function
   | (f, Top) | (Top, f) -> f
   | (f, Bot) | (Bot, f) -> Bot
   | (f1, f2) -> And (f1, f2);;
 
-let rec simplif_or = function
+let rec simp_or = function
   | (f, Top) | (Top, f) -> Top
   | (f, Bot) | (Bot, f) -> f
   | (f1, f2) -> Or (f1, f2);;
 
-let rec simplif_form = function
+let rec simp_imp = function
+  | (f, Top) | (Bot, f) -> Top
+  | (Top, f) -> f
+  | (f, Bot) -> Not f
+  | (f1, f2) -> Imp (f1, f2);;
+
+let rec simp_equ = function
+  | (f, Top) | (Top, f) -> f
+  | (f, Bot) | (Bot, f) -> Not f
+  | (f, Not f) | (Not f, f) -> Bot
+  | (f1, f2) -> Equ (f1, f2);;
+
+
+let rec simp_form = function
   | And (f1, f2) ->
-     let f1' = simplif_form f1
-     and f2' = simplif_form f2 in
-     simplif_and (f1', f2')
-  | Or (f1', f2') -> 
-     let f1' = siplif_form f1
-     and f2' = simplif_form f2 in
-     simplif_or (f1', f2')
-  |Imp (f1, f2) ->
-    let f1' = simplif_form f1
-    and f2' = simplif_form f2 in
-    simplif_imp (f1', f2');;
+     let f1' = simp_form f1
+     and f2' = simp_form f2 in
+     simp_and(f1', f2')
+  | Or (f1, f2) -> 
+     let f1' = simp_form f1
+     and f2' = simp_form f2 in
+     simp_or(f1', f2')
+  | Imp (f1, f2) ->
+    let f1' = simp_form f1
+    and f2' = simp_form f2 in
+    simp_imp(f1', f2')
+  | Equ (f1, f2) ->
+     let f1' = simp_form f1
+     and f2' = simp_form f2 in
+     simp_equ(f1', f2')
+  | f -> f;;
+
+let f1 = Var "A";;
+let f2 = Not (Var "A");;
+let f3 = And ((Var "A"), Top);;
+let f4 = Or (Bot, Var "A");;
+let f5 = Imp (Bot, Var "A");;
+let f6 = Equ ((Not (Var "A")), Var "A");;
+
+string_of_form f1;;
+string_of_form f2;;
+string_of_form f3;;
+string_of_form f4;;
+string_of_form f5;;
+string_of_form f6;;
+
+simp_form f1;;
+simp_form f2;;
+simp_form f3;;
+simp_form f4;;
+simp_form f5;;
+simp_form f6;;
