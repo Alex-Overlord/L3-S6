@@ -2,6 +2,7 @@
 
 ((fun x -> x + 1) 1);;
 
+
 let a1 = fun x -> x + 1;;
 a1 1;;
 
@@ -109,7 +110,6 @@ let rec simp_imp = function
 let rec simp_equ = function
   | (f, Top) | (Top, f) -> f
   | (f, Bot) | (Bot, f) -> Not f
-  | (f, Not f) | (Not f, f) -> Bot
   | (f1, f2) -> Equ (f1, f2);;
 
 
@@ -132,21 +132,32 @@ let rec simp_form = function
      simp_equ(f1', f2')
   | f -> f;;
 
-let f1 = Var "A";;
+(*#trace simp_form;;
+let f1 = Imp (Bot, Var "A");;
+string_of_form f1;;
+simp_form f1;;
+string_of_form(simp_form f1);;*)
+
+(* Exo 2 *)
+let a = 'A';;
+let b = 'B';;
+let i1 = [(a, Top); (b, Bot)];;
+val assoc ass1 = a [(a, Top); (b, Bot)];;
+
+(* Tests *)
+
 let f2 = Not (Var "A");;
 let f3 = And ((Var "A"), Top);;
 let f4 = Or (Bot, Var "A");;
 let f5 = Imp (Bot, Var "A");;
 let f6 = Equ ((Not (Var "A")), Var "A");;
 
-string_of_form f1;;
 string_of_form f2;;
 string_of_form f3;;
 string_of_form f4;;
 string_of_form f5;;
 string_of_form f6;;
 
-simp_form f1;;
 simp_form f2;;
 simp_form f3;;
 simp_form f4;;
