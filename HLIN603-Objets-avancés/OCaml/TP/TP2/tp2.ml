@@ -192,19 +192,47 @@ e#print;;
 
 (* Exo 4 *)
 
-class ['t] abr (v : 't) =
-object
-  val value = v
-  (*  val *)
-  method get = value
 (*method insert =
   method find =
   method remove =*)
+(*
+class ['t] abr (r : 't) =
+object
+  val mutable root = r
+  method get_root = root
+  method set_root r = root <- r
 end;;
 
-(*class ['t] abr =
+class ['t] node (k : 't) (l : node) (r : node) =
 object
-  val root *)
+  val mutable key = k
+  val mutable left = l
+  val mutable right = r
+  method get_key = key
+  method get_left = left
+  method get_right = right
+  method set_key _k = key <- _k
+  method set_left _l = left <- _l
+  method set_right _r = right <- _r
+end;;
+ *)
 
-let n1 = new abr 1;;
-n1#get;;
+class ['n] node (k : 'k) (l : 'n) (r : 'n) = object (self)
+  val mutable k : 'k = k
+  val mutable l : 'n = l
+  val mutable r : 'n = r
+  method get_k = k
+  method get_l = l
+  method get_r = r
+  method set_k (_k : 'n) = k <- _k
+  method set_l (_l : 'n) = l <- _l
+  method set_r (_r : 'n) = r <- _r
+  method insert (_k : 'k) =
+    if _k < self#get_k then
+      print_string("insert")
+end;;
+
+let n1 = new node 1 2 3;;
+n1#get_k;;
+n1#insert 0;;
+
