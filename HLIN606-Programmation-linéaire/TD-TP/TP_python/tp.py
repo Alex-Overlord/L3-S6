@@ -31,13 +31,8 @@ def wagon(boxes, nb_wagons):
     return k.varValue, sol
 
 
-def main():
-    boxes = [34, 6, 8, 17, 16, 5, 13, 21, 25, 21, 14, 13, 33, 9, 25, 25]
-    print(wagon(boxes, 3))
-    # j'ajoute des boxes et un wagon
-    boxes += [35, 23, 12, 10]
-    print(wagon(boxes, 4))
-
-
-if __name__ == '__main__':
-    main()
+boxes = [34, 6, 8, 17, 16, 5, 13, 21, 25, 21, 14, 13, 33, 9, 25, 25]
+print(wagon(boxes, 3))
+# j'ajoute des boxes et un wagon
+boxes += [35, 23, 12, 10]
+print(wagon(boxes, 4))
