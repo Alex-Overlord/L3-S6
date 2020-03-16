@@ -217,22 +217,36 @@ object
 end;;
  *)
 
-class ['n] node (k : 'k) (l : 'n) (r : 'n) = object (self)
-  val mutable k : 'k = k
-  val mutable l : 'n = l
-  val mutable r : 'n = r
-  method get_k = k
-  method get_l = l
-  method get_r = r
-  method set_k (_k : 'n) = k <- _k
-  method set_l (_l : 'n) = l <- _l
-  method set_r (_r : 'n) = r <- _r
-  method insert (_k : 'k) =
-    if _k < self#get_k then
-      print_string("insert")
-end;;
+class virtual ['a] abr =
+        object
+          method virtual insert : 'a -> 'a abr
+          method virtual find : 'a -> bool
+        end;;
 
-let n1 = new node 1 2 3;;
-n1#get_k;;
-n1#insert 0;;
+class ['a] empty =
+object
+  inherit ['a] abr
+  method insert n = new node n (new empty) (new empty)
+  method find n = false
+end
+  
+  and ['a] node n (l : 'a abr) (r : 'a abr) =
+    object (self)
+      inherit ['a] abr
+      val value = n
+      val mutable left = l
+      val mutable right = r
+      method insert (n : 'a) =
+        (if n < value then left <- left#insert n
+         else if n > value then right <- right#insert n);
+        (self :> 'a abr)
+      method find (n : 'a) =
+        if n == value then true
+        else if n < value then left#find n
+        else right#find n
+    end;;
+                
+let t = ((((new empty)#insert 8)# insert 3)# insert 10)#insert 6;;
+t#find 8;;
+t#find 2;;
 
