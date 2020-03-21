@@ -223,6 +223,7 @@ class virtual ['a] abr =
           method virtual find : 'a -> bool
         end;;
 
+
 class ['a] empty =
 object
   inherit ['a] abr
