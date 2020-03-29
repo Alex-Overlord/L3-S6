@@ -77,6 +77,7 @@ class virtual ['a] add_magma =
           method virtual add : 'a -> 'a -> 'a
         end;;
 
+
 class virtual ['a] mul_magma =
         object
           method virtual mul : 'a -> 'a -> 'a
@@ -97,9 +98,53 @@ class virtual ['a] mul_monoid =
 class virtual ['a] add_group =
         object
           inherit ['a] add_monoid
-          method virtual add_reverse : 'a
+          method virtual add_inv : 'a -> 'a
         end;;
 
 class virtual ['a] ring =
         object
-          inherit ['a]
+          inherit ['a] add_group
+          inherit ['a] mul_monoid
+        end;;
+
+class int_ring =
+object
+  inherit [int] ring
+  method add x y = y + y
+  method add_id = 0
+  method add_inv x = -(x)
+  method mul x y = x * y
+  method mul_id = 1
+end;;
+
+class virtual ['a, 'b] polynomial (r : 'b) (p : ('a * int) list) =
+        object 
+          inherit ['a] ring
+          method virtual eval : 'b -> 'b
+        end;;
+
+class int_polynomial (p : (int * int) list) =
+object (self)
+  inherit [int, int] polynomial anneau p
+  method mul_id = 1
+  method mul a b = a * b
+  method add_inv a = -(a)
+  method add_id = 0
+  method add a b = a + b
+  method puissInt(a, b) = int_of_float(float_of_int(a) ** float_of_int(b))
+  method eval v =
+    match p with
+    | [] -> (anneau)
+    | (a, x) :: tail -> a * puissInt(v, x) + ((new int_polynomial tail
+                                              )#eval v)
+end;;
+
+let p = [(3,2);(0,1);(0,0)];;
+let e = new int_polynomial p;;
+e#eval 1;;
+e#eval 2;;
+
+let p2 = [(3,2);(-12,1);(-2,0)];;
+let e2 = new int_polynomial p2;;
+e2#eval 4;;
+e2#eval 9;;
