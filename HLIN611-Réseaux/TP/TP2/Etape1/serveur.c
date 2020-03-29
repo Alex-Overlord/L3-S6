@@ -67,6 +67,11 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
   printf("Serveur : le client %s:%d est connecté  \n", inet_ntoa(adCv.sin_addr),  adCv.sin_port);
+
+  printf("Serveur : Arrêt de test, rentrez quelque chose : ");
+  char stop[1500]; 
+  fgets(stop, sizeof(stop), stdin);
+  printf("Serveur : Vous avez saisi : %s", stop);
   
   /* Etape 5 : réception d'un message de type chaîne de caractères */
   char buffer[4000];
