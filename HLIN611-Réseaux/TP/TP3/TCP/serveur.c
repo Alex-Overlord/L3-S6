@@ -31,10 +31,11 @@ int recvTCP(int socket, char* buffer, size_t length, unsigned int* nbBytesReceiv
   
   long prec;
   long message;
+  int nbTotalReceived = 0;
   
-  while (1) {
+  while (nbTotalReceived < length) {
     int received = recv(socket, buffer, length, 0);
-    message = ntohl(buffer);
+    message = ntohl((long)buffer);
     
     if (received <= 0) {
       return received;
@@ -49,13 +50,14 @@ int recvTCP(int socket, char* buffer, size_t length, unsigned int* nbBytesReceiv
     if (nbCallRecv == 0) {
       prec = received;
     }
-    
+
+    nbTotalReceived += received;
     (*nbBytesReceived) += received;
     (*nbCallRecv)++;
   }
   
-  printf("Il y a eu %s \n", *nbBytesReceived);
-  printf("Il y a eu %s d'appels reçu\n", *nbCallRecv);
+  printf("Il y a eu %d \n", *nbBytesReceived);
+  printf("Il y a eu %d d'appels reçu\n", *nbCallRecv);
   
   return 1;
 }
@@ -83,6 +85,7 @@ int main(int argc, char *argv[]) {
   server.sin_family = AF_INET;
   server.sin_addr.s_addr = INADDR_ANY;
   server.sin_port = htons(atoi(argv[1]));
+  socklen_t lgA = sizeof(struct sockaddr_in);
   
   if (bind(ds, (struct sockaddr*) &server, sizeof(server)) < 0) {
     perror("Serveur : erreur bind");
@@ -102,14 +105,14 @@ int main(int argc, char *argv[]) {
   printf("Serveur : mise en écoute : ok\n");
   printf("Serveur : j'attends la demande d'un client (accept) \n");
   
-  int dsCv = accept(ds, (struct sockaddr*) &adCv, &lgCv);
+  int dsCv = accept(ds, (struct sockaddr*) &server, &lgA);
   if (dsCv < 0) {
     perror("Serveur : probleme accept :");
     close(ds);
     exit(1);
   }
   
-  printf("Serveur : le client %s:%d est connecté  \n", inet_ntoa(adCv.sin_addr),  adCv.sin_port); 
+  printf("Serveur : le client %s:%d est connecté \n", inet_ntoa(server.sin_addr), server.sin_port); 
   
   /* Réception de messages, chaque message est un long int */
   
@@ -125,7 +128,13 @@ int main(int argc, char *argv[]) {
   int rcv = recvTCP (dsCv, (char*)messagesRecus, sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);  
   
   /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
-  //...
+  if (rcv < 0) {
+      perror("Serveur : [recvTCP] je suis sourd(e)\n");
+      close(rcv);
+      exit(1);
+    } else if (rcv == 0) {
+      printf("Serveur : [recvTCP] arrêt normal \n");
+    }
   
   
   printf("Serveur : j'ai reçu au total %d octets avec %d appels à recv \n", nbTotalOctetsRecus, nbAppelRecv);
@@ -143,11 +152,15 @@ int main(int argc, char *argv[]) {
     rcv = recvTCP (dsCv, (char*)(messagesRecus+1) , sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);   
     
     /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
-    if (rcv <= 0) {
-      printf("Serveur : [recvTCP] je suis sourd(e)\n");
+    if (rcv < 0) {
+      perror("Serveur : [recvTCP] je suis sourd(e)\n");
       close(rcv);
       exit(1);
-    } 
+    } else if (rcv == 0) {
+      printf("Serveur : [recvTCP] arrêt normal \n");
+      break;
+    }
+    
     
     if (messagesRecus[1] < messagesRecus[0]) // si la valeur reçue est inférieure à la précédente, alors désordre.
       printf("Serveur : reception dans le désordre : %ld reçu après %ld \n", messagesRecus[1], messagesRecus[0]);

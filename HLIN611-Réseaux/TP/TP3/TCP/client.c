@@ -30,16 +30,12 @@ int sendTCP(int socket, const char* buffer, size_t length, unsigned int* nbBytes
   int sent = 0;
   int nbTotalSent = 0;
   
-  while (nbTotalSent < lenght) {
+  while (nbTotalSent < length) {
     
     sent = send(socket, buffer + nbTotalSent, length - nbTotalSent, 0);
     
-    if (sent < 0) {
-      perror("Client : erreur lors de l'envoi :");
-      return 1;
-    } else if (sent == 0) {
-      print("Client : serveur déconnecté \n");
-      return 0;
+    if (sent <= 0) {
+      return sent;
     } else {
       nbTotalSent += sent;
       (*nbBytesSent) += sent;
@@ -64,7 +60,24 @@ int main(int argc, char *argv[]) {
   int ds = socket(PF_INET, SOCK_STREAM, 0);
 
   if (ds == -1) {
-    printf("Client : pb creation socket\n");
+    perror("Client : pb creation socket\n");
+    exit(1);
+  }
+
+  printf("Client : creation de la socket : ok \n");
+
+  struct sockaddr_in adrServ;
+  adrServ.sin_addr.s_addr = INADDR_ANY ;
+  adrServ.sin_family = AF_INET;
+  adrServ.sin_port = htons(atoi(argv[2]));
+
+  int lgAdr = sizeof(struct sockaddr_in);
+  
+  int co = connect(ds, (struct sockaddr*) &adrServ, lgAdr);
+
+  if (co < 0) {
+    perror("Client : pb au connect :");
+    close(ds);
     exit(1);
   }
   
@@ -75,20 +88,25 @@ int main(int argc, char *argv[]) {
   long int message;
   unsigned int nbTotalOctetsEnvoyes = 0;
   unsigned int nbAppelSend = 0;
-
+  
   for (int i = 1; i <= atoi(argv[3]); i++) {
     message = i; // pour passer d'un int à long int (de 4 à 8 octets). Vous pouvez faire autrement.
     
-    int snd = sendTCP(ds, );
-
+    int snd = sendTCP(ds, (char*)&message, sizeof(long int), &nbTotalOctetsEnvoyes, &nbAppelSend);
+    
     /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
-
-
-   printf("Client : j'ai envoyé au total %d octets avec %d appels à send \n",nbTotalOctetsEnvoyes,  nbAppelSend) ;
-
+    if (snd == -1) {
+      perror("Client : error [sendTCP] \n");
+      exit(1);
+    } else if (snd == 0) {
+      printf("Client : arrêt normal \n");
+    }
+  
+    
+    printf("Client : j'ai envoyé au total %d octets avec %d appels à send \n", nbTotalOctetsEnvoyes, nbAppelSend);
   }
+  
   /*Terminer proprement. */
-
- ...
+  close(ds);
   printf("Client : je termine\n");
 }

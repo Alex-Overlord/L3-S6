@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
   
   /* Etape 3 : envoyer une demande de connexion au serveur.*/
   int conn = connect(ds, (struct sockaddr*) &adrServ, lgAdr);
-  if (conn <0){
+  if (conn < 0) {
     perror("Client : pb au connect :");
     close(ds);
     exit(1);
@@ -93,6 +93,6 @@ int main(int argc, char *argv[]) {
   printf("Client : j'ai envoyé %d octets et le serveur me répond qu'il a reçu : %d octets \n", snd1 + snd2, rcv);
   
   /* Etape 7 : je termine proprement. */
-  close (ds);
+  close(ds);
   printf("Client : je termine\n");
 }
