@@ -26,20 +26,25 @@
    déposés dans le buffer d'envoi et le nombre d'appels reussis à send(..)
    (ils sont initialisés par l'appelant.*/
 /* Si vous avez utilisé des variables globales, pas de souci. */
-int sendTCP(int socket, const char * buffer, size_t length, unsigned int *nbBytesSent, unsigned int * nbCallSend){
-
- ...
-  while (...){
+int sendTCP(int socket, const char* buffer, size_t length, unsigned int* nbBytesSent, unsigned int* nbCallSend) {
+  int sent = 0;
+  int nbTotalSent = 0;
+  
+  while (nbTotalSent < lenght) {
     
-    sent = send(...);
+    sent = send(socket, buffer + nbTotalSent, length - nbTotalSent, 0);
     
-    if (...) {
-      return sent;
+    if (sent < 0) {
+      perror("Client : erreur lors de l'envoi :");
+      return 1;
+    } else if (sent == 0) {
+      print("Client : serveur déconnecté \n");
+      return 0;
+    } else {
+      nbTotalSent += sent;
+      (*nbBytesSent) += sent;
+      (*nbCallSend)++;
     }
-
-    ...
-    (*nbBytesSent)+=sent;
-    (*nbCallSend)++;
   }
   return 1;
 }
@@ -50,32 +55,31 @@ int main(int argc, char *argv[]) {
   /* je passe en paramètre l'adresse de la socket d'écoute du serveur
      (IP et numéro de port) et le nombre N d'entiers à envoyerr. Je teste donc le passage de parametres */
 
-  if (argc != 4){
+  if (argc != 4) {
     printf("utilisation : %s ip_serveur port_serveur N_nombre_entiers_e_envoyer\n", argv[0]);
     exit(0);
   }
 
   /* créer une socket, demader une connexion au serveur */   
-  int ds = socket(...);
+  int ds = socket(PF_INET, SOCK_STREAM, 0);
 
-
-  ...
-
+  if (ds == -1) {
+    printf("Client : pb creation socket\n");
+    exit(1);
+  }
   
   printf("Client : demande de connexion reussie \n");
 
   // Je peux tester l'exécution de cette étape avant de passer à la suite.
 
-  
-
   long int message;
   unsigned int nbTotalOctetsEnvoyes = 0;
   unsigned int nbAppelSend = 0;
 
-  for(int i = 1; i <= atoi(argv[3]); i++){
+  for (int i = 1; i <= atoi(argv[3]); i++) {
     message = i; // pour passer d'un int à long int (de 4 à 8 octets). Vous pouvez faire autrement.
     
-    int snd = sendTCP(...);
+    int snd = sendTCP(ds, );
 
     /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
 
