@@ -21,69 +21,100 @@
 
 
 /* Réutiliser les fonctions de l'exercice 3 du TP précédent */
-/* les deux derniers parametres sont les compteurs, auxquels doit s'ajouter le nombre d'octets
-   lus depuis le buffer de réception et le nombre d'appels reussis à recv(..)
+/* les deux derniers parametres sont les compteurs, auxquels doit s'ajouter le nombre d'octets lus depuis le buffer de réception et le nombre d'appels reussis à recv(..)
    (ils sont initialisés par l'appelant.*/
 /* Si vous avez utilisé des variables globales, pas de souci. */
-int recvTCP(int socket, char *buffer, size_t length, unsigned int *nbBytesReceved, unsigned int * nbCallRecv){
+int recvTCP(int socket, char *buffer, size_t length, unsigned int *nbBytesReceved, unsigned int * nbCallRecv) {
 
   // ce squelette est juste pour vous indiquer où et comment utiliser
   // les paramètres en plus. C'est à vous de savoir comment l'adapter à vote code.
-	...
-    while (....){
-  
-      received = recv(.....);
 
-      if(received <= 0){
-        return received;
-      }
-      
-      ....
-	
-      (*nbBytesReceved)+=received;
-      (*nbCallRecv)++;
+  long prec;
+  long message;
+  
+  while (1) {
+    int received = recv(socket, buffer, length, 0);
+    message = ntohl(buffer);
+    
+    if (received <= 0) {
+      return received;
     }
-    return 1;
+    
+    if (*nbCallRecv != 0) {
+      if (prec > message) {
+	printf("le message est plus petit \n");
+      }
+    }
+    
+    if (nbCallRecv == 0) {
+      prec = received;
+    }
+      
+    (*nbBytesReceved)+=received;
+    (*nbCallRecv)++;
+  }
+
+  printf("Il y a eu %s \n", *nbBytesReceved);
+  printf("Il y a eu %s d'appels reçu\n", *nbCallRecv);
+  
+  return 1;
 }
 
 
-int main(int argc, char *argv[])
-{
-	 
-  
-  if (argc<2){
+int main(int argc, char *argv[]) {
+  if (argc < 2) {
     printf("utilisation: %s numero_port\n", argv[0]);
     exit(1);
   }
   
   /*  Création de la socket d'écoute, nomage et mise en écoute.*/
- 
-  int ds = socket(...);
-
-
-  ...
-
+  int ds = socket(PF_INET, SOCK_STREAM, 0);
 
   // Penser à tester votre code progressivement.
-
+  if (ds == -1) {
+    perror("Serveur : probleme creation socket");
+    exit(1);
+  }
+  
   // Rappel un seul client est à traiter.
   printf("Serveur : j'attends la demande du client (accept) \n"); 
   
-  ...
+  struct sockaddr_in server;
+  server.sin_family = AF_INET;
+  server.sin_addr.s_addr = INADDR_ANY;
+  server.sin_port = htons(atoi(argv[1]));
+  
+  if (bind(ds, (struct sockaddr*) &server, sizeof(server)) < 0) {
+    perror("Serveur : erreur bind");
+    close(ds);
+    exit(1);
+  }
+  
+  printf("Serveur : nommage : ok\n");
 
-  int dsCv = accept(ds,...);
-
-  ...
- 
-  printf("Serveur: le client %s:%d est connecté  \n", ...);
-
- 
+  int ecoute = listen(ds, 5);
+  if (ecoute < 0) {
+    printf("Serveur : je suis sourd(e)\n");
+    close(ds);
+    exit(1);
+  }
+  
+  printf("Serveur : mise en écoute : ok\n");
+  printf("Serveur : j'attends la demande d'un client (accept) \n");
+  
+  int dsCv = accept(ds, (struct sockaddr*) &adCv, &lgCv);
+  if (dsCv < 0) {
+    perror("Serveur : probleme accept :");
+    close(ds);
+    exit(1);
+  }
+  
+  printf("Serveur : le client %s:%d est connecté  \n", inet_ntoa(adCv.sin_addr),  adCv.sin_port); 
  
   /* Réception de messages, chaque message est un long int */
  
   long int messagesRecus[2];   // je defini ce tableau pour garder le
 			       // message précédent (voir plus bas)
-
 
   unsigned int nbTotalOctetsRecus = 0;
   unsigned int nbAppelRecv = 0;
@@ -91,11 +122,10 @@ int main(int argc, char *argv[])
   // recevoir un premier message puis mettre en place la boucle de
   // réception de la suite.
 
-
   int rcv = recvTCP (dsCv, (char*)messagesRecus, sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);  
 
     /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
-   ...
+  //...
   
   
     printf("Serveur : j'ai reçu au total %d octets avec %d appels à recv \n", nbTotalOctetsRecus, nbAppelRecv);
@@ -105,12 +135,12 @@ int main(int argc, char *argv[])
     fgetc(stdin);
     */
     
-    while(1){ // le serveur n'a pas connaissance du nombre de messages
+    while (1) { // le serveur n'a pas connaissance du nombre de messages
 	      // qu'il recevra, donc, il boucle et la gestion des
 	      // valeurs de retours de fonctions permettra de sortir
 	      // de la boucle pour arrêter le serveur.
     
-      rcv = recvTCP (dsCv, (char*)(messagesRecus+1) , sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);  
+      rcv = recvTCP (dsCv, (char*)(messagesRecus+1) , sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);   
 
     /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
    ...

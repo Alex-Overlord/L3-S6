@@ -14,9 +14,9 @@
    où chaque entier est un message à part entière (un appel à sendTCP
    par entier). N est passé en paramètre du programme client,
 
-- afficher le nombre total d'appels de la fonction send et le nombre total d'octets effcetivement envoyés,
+- afficher le nombre total d'appels de la fonction send et le nombre total d'octets effectivement envoyés,
 
-- terminer poprement
+- terminer proprement
 */
 
 
