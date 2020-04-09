@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
   // recevoir un premier message puis mettre en place la boucle de
   // réception de la suite.
   
-  int rcv = recvTCP (dsCv, (char*)messagesRecus, sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);  
+  int rcv = recvTCP(dsCv, (char*)messagesRecus, sizeof(long int), &nbTotalOctetsRecus, &nbAppelRecv);  
   
   /* Traiter TOUTES les valeurs de retour (voir le cours ou la documentation). */
   if (rcv < 0) {
@@ -135,7 +135,6 @@ int main(int argc, char *argv[]) {
     } else if (rcv == 0) {
       printf("Serveur : [recvTCP] arrêt normal \n");
     }
-  
   
   printf("Serveur : j'ai reçu au total %d octets avec %d appels à recv \n", nbTotalOctetsRecus, nbAppelRecv);
   
