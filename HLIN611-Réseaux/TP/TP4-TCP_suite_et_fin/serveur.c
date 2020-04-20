@@ -1,26 +1,25 @@
-...
+//...
 
 
 #define MAX_BUFFER_SIZE 16000 // taille du buffer qui me permet de récupérer le contenu du fichier à recevoir bloc par bloc. Vous pouvez changer cette valeur.
 
 
-...
+//...
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
   
- ....
+  //....
   
- /* boucle pour le traitement itératif des clients */
-  while(1){
+  /* boucle pour le traitement itératif des clients */
+  while (1) {
 
   
     // je doit recevoir des données me permettant d'obtenur le nom d'un fichier
-    ...
+    //...
     
-    char* file_name = malloc(...);
+    //char* file_name = malloc(...);
 
-    ...
+    //...
     printf("Serveur, je vais recevoir le fichier %s\n", file_name);
 
     // je construis le chemin vers le fichier à créer.
@@ -32,7 +31,7 @@ int main(int argc, char *argv[])
 
   // j'ouvre le fichier dans lequel je vais écrire
     FILE* file = fopen(filepath, "wb");
-    if(file == NULL){  // servez vous de cet exemple pour le traitement des erreurs. 
+    if (file == NULL) {  // servez vous de cet exemple pour le traitement des erreurs. 
       perror("Serveur : erreur ouverture fichier: \n");
       free(filepath);
       close (dsCv);
@@ -44,12 +43,12 @@ int main(int argc, char *argv[])
     //reception des données me permettant de recevoir correctement le contenu du fichier.
     int file_size;
   
-    ...
+    //...
       
     int contentReceived = 0; // Compte le nombre d'octets du fichier reçu
 
     // je reçois le contenu progressivement 
-    while(contentReceived < file_size){
+    while (contentReceived < file_size) {
       
       char buffer[MAX_BUFFER_SIZE];
       rcv = recv(dsCv, buffer, MAX_BUFFER_SIZE, 0);  // /!\ ici appel
@@ -58,17 +57,17 @@ int main(int argc, char *argv[])
 						     // n'est pas
 						     // adapté. Pourquoi ?
 
-      ....
+      //....
 	
       // si pas d'erreurs, j'ai reçu rcv octets. Je dois les écire dans le fichier.
       size_t written = fwrite(buffer, sizeof(char), rcv, file);
-      if(written < rcv){
+      if (written < rcv) {
 	perror("Serveur : Erreur a l'ecriture du fichier \n");
-	....
-	  break; // je sors de la boucle d'écrture/réception.
+	//....
+	break; // je sors de la boucle d'écrture/réception.
       }
 
-      contentReceived += ...;
+      //contentReceived += ...;
     }
 
     // fermeture du fichier à la fin de son écriture ou si erreur s'est produite.
